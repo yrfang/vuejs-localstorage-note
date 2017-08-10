@@ -1,5 +1,5 @@
 <template lang="pug">
-.Listpage
+.Listpage.container
 </template>
 
 <script>
