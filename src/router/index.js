@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Listpage from '@/components/Listpage';
+import NoteList from '@/components/NoteList';
 
 Vue.use(Router);
 
@@ -8,8 +8,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Listpage',
-      component: Listpage
+      name: 'note',
+      component: NoteList
     }
   ]
 })
