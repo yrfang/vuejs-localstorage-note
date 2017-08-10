@@ -9,11 +9,11 @@
         option(v-for="i in 5") {{i}}
       button.addNote Add Note
   .row.NoteListItem
-    .noteContainer(v-for="note in notes")
+    .noteContainer(v-for="(note,id) in notes")
       .topper
         i.fa.fa-bars
         span
-          a.title(href="#") {{ note.title }}
+          a.title(href="#") {{id}} : {{ note.title }}
       .time {{ note.meta }}
       .tag {{ note.tag }}
 </template>
@@ -34,7 +34,7 @@ export default {
         { title: 'note title 1', meta: 'Added 20 days ago', text: 'the example from Bootstrapping', tag: 'work' },
         { title: 'note title 2', meta: 'Added 15 days ago', text: 'the example from Bootstrapping', tag: 'family' },
         { title: 'And another one', meta: 'Added 10 days ago', text: 'the example', tag: 'family' },
-        {title: 'the example from Bootstrapping', meta: 'created and learned on 2017/07/25'},
+        {title: 'the example from Bootstrapping', meta: 'created and learned on 2017/07/25', tag: 'important'},
         { title: 'And another one', meta: 'Added 10 days ago', text: 'the example', tag: 'family' }
       ];
       // console.log(testData);
