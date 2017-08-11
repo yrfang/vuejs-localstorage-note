@@ -1,16 +1,18 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import VueLocalStorage from 'vue-localstorage';
 
 import NoteList from '@/components/NoteList';
 import Note from '@/components/Note';
 
 Vue.use(Router);
+Vue.use(VueLocalStorage);
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'NoteList',
+      name: 'All Notes',
       component: NoteList
     },
     {
@@ -19,11 +21,5 @@ export default new Router({
       component: Note,
       props: true,
     },
-    // {
-    //   path: '/',
-    //   name: 'View Note',
-    //   component: Note,
-    //   props: true,
-    // },
   ]
 })

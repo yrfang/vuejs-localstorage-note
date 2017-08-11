@@ -8,21 +8,17 @@
       select.tagSelect
         option(v-for="i in 5") {{i}}
       button.addNote Add Note
-  .row.NoteListItem
-    .noteContainer(v-for="(note,id) in notes")
-      .topper
-        i.fa.fa-bars
-        span
-          a.title(href="#") {{id+1}} : {{ note.title }}
-      .time {{ note.meta }}
-      .tag {{ note.tag }}
+  .items
+    ul
+      li(v-for="(note,id) in notes")
+        NoteListItems(:note="note", :id="id", :key="note.id")
 </template>
 
 <script>
-import Note from '@/components/Note';
+import NoteListItems from '@/components/NoteListItems';
 
 export default {
-  components: { Note },
+  components: { NoteListItems },
   data() {
     return {
       notes: [],
@@ -106,7 +102,7 @@ h3
     &:hover
       background-color: rgba(#366ce2,0.7)
 
-.NoteListItem
+.items
   padding-left: 100px
   padding-right: 100px
   position: fixed
@@ -118,36 +114,11 @@ h3
   overflow-y: scroll
   z-index: -10
 
-.noteContainer
-  border: solid 1px #bbb
-  border-radius: 5px
-  padding: 20px
-  letter-spacing: 1.5px
-  margin: 10px
-  margin-left: auto
-  margin-right: auto
-  width: 80%
-  height: 150px
-
-  .topper
-    i.fa.fa-bars
-      margin-right: 10px
-      color: #b6b6b6
-      font-size: 18px
-      cursor: grab
-
-    .title
-      color: #366ce2
-      font-size: 24px
-      font-weight: bold
-
-  .time
-    font-size: 16px
-    margin-top: 10px
-
-  .tag
-    font-size: 18px
-    margin-top: 10px
+  ul
+    margin: 0px
+    padding: 0px
+    li
+      list-style: none
 
 @media (min-width:480px)
   input

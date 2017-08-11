@@ -2,7 +2,7 @@
 .Note
   header
     a.backToList
-      span
+      span(@click="goBack")
         i.fa.fa-chevron-left
       span.menuText Viewing Note
     a
@@ -10,22 +10,34 @@
     a
       i.fa.fa-trash
   .content
-    .title 完成 Note！
-    .time 加入時間今天11:14 am
-    .tag important
-    .text 希望今天可以完成！希望今天可以完成！希望今天可以完成！希望今天可以完成！希望今天可以完成！
+    .title {{ note.title }}
+    .time {{ note.time }}
+    .tag  {{ note.tag }}
+    .text {{ note.text }}
 </template>
 
 <script>
 export default {
-  props: ['id'],
+  props: ['id',],
   data() {
     return {
-
+      note: {},
     }
   },
+  mounted() {
+    // this.loadNotes();
+  },
   methods: {
-
+    loadNote() {
+      const notes = this.$localStorage.get('notes');
+      this.note = notes.find(note => note.id === this.id);
+      if (!this.note) {
+        this.$router.push('/');
+      }
+    },
+    goBack() {
+      this.$router.push('/');
+    }
   },
 }
 </script>
