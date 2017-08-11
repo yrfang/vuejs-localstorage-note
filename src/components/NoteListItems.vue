@@ -1,13 +1,13 @@
 <template lang="pug">
 .NoteListItems
-  router-link(:to="{ name: 'View Note', params: { id } }")
-    .noteContainer
-      .topper
-        i.fa.fa-bars
-        span
-          a.title(href="#") {{id+1}} : {{ note.title }}
-      .time {{ note.meta }}
-      .tag {{ note.tag }}
+  .noteContainer
+    .topper
+      i.fa.fa-bars
+      span
+        router-link(:to="{ name: 'View Note', params: { id } }")
+          a.title(href="#") {{id}}: {{ note.title }}
+    .time {{ note.meta }}
+    .tag {{ note.tag }}
 </template>
 
 <script>

@@ -4,6 +4,7 @@ import VueLocalStorage from 'vue-localstorage';
 
 import NoteList from '@/components/NoteList';
 import Note from '@/components/Note';
+import CreateNote from '@/components/CreateNote';
 
 Vue.use(Router);
 Vue.use(VueLocalStorage);
@@ -21,5 +22,16 @@ export default new Router({
       component: Note,
       props: true,
     },
+    {
+      path: '/edit/:id',
+      name: 'Edit Note',
+      component: CreateNote,
+      props: true,
+    },
+    {
+      path: '/new',
+      name: 'Create Note',
+      component: CreateNote,
+    }
   ]
 })

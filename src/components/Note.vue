@@ -2,16 +2,16 @@
 .Note
   header
     a.backToList
-      span(@click="goBack")
+      span(@click="goBack()")
         i.fa.fa-chevron-left
       span.menuText Viewing Note
-    a
+    a(@click="editNote()")
       i.fa.fa-pencil
-    a
+    a(@click="deleteNote()")
       i.fa.fa-trash
   .content
     .title {{ note.title }}
-    .time {{ note.time }}
+    .time 要使用moment.js
     .tag  {{ note.tag }}
     .text {{ note.text }}
 </template>
@@ -25,19 +25,26 @@ export default {
     }
   },
   mounted() {
-    // this.loadNotes();
+    this.loadNote();
   },
   methods: {
     loadNote() {
-      const notes = this.$localStorage.get('notes');
-      this.note = notes.find(note => note.id === this.id);
+      const getLocalNotes = localStorage.getItem('vuejs-note');
+      const notes = JSON.parse(getLocalNotes);
+      this.note = notes[this.id];
       if (!this.note) {
         this.$router.push('/');
       }
     },
     goBack() {
       this.$router.push('/');
-    }
+    },
+    editNote() {
+
+    },
+    deleteNote() {
+
+    },
   },
 }
 </script>
@@ -90,7 +97,7 @@ header
   border-radius: 5px
 
   .title
-    font-size: 26px
+    font-size: 28px
     font-weight: bold
     color: #5B86E5
     padding-top: 10px
@@ -103,7 +110,7 @@ header
     padding-bottom: 5px
 
   .tag
-    font-size: 18px
+    font-size: 16px
     padding-top: 5px
     padding-bottom: 5px
 

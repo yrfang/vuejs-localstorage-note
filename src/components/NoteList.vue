@@ -7,7 +7,7 @@
     .row
       select.tagSelect
         option(v-for="i in 5") {{i}}
-      button.addNote Add Note
+      button.addNote(@click="createNote") Add Note
   .items
     ul
       li(v-for="(note,id) in notes")
@@ -29,15 +29,35 @@ export default {
   },
   methods: {
     loadNotes() {
-      var testData = [
-        { title: 'note title 1', meta: 'Added 20 days ago', text: 'the example from Bootstrapping', tag: 'work' },
-        { title: 'note title 2', meta: 'Added 15 days ago', text: 'the example from Bootstrapping', tag: 'family' },
-        { title: 'And another one', meta: 'Added 10 days ago', text: 'the example', tag: 'family' },
-        {title: 'the example from Bootstrapping', meta: 'created and learned on 2017/07/25', tag: 'important'},
-        { title: 'And another one', meta: 'Added 10 days ago', text: 'the example', tag: 'family' }
+      const testData = [
+        {
+          title: 'note one',
+          meta: "Added 20 days ago",
+          tag: "work",
+          text: "the first record",
+        },
+        {
+          title: 'note 2',
+          meta: "Added 10 days ago",
+          tag: "work",
+          text: "the 2 record",
+        },
+        {
+          title: 'note 3',
+          meta: "Added 2 days ago",
+          tag: "work",
+          text: "the 3 record",
+        },
       ];
-      // console.log(testData);
       this.notes = testData;
+
+      localStorage.setItem('vuejs-note', JSON.stringify(this.notes));
+
+      const notes = localStorage.getItem('vuejs-note');
+      // console.log(this.notes);
+    },
+    createNote() {
+      this.$router.push('new');
     }
   },
 }
