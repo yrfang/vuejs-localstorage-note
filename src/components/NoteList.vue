@@ -13,13 +13,16 @@
       .topper
         i.fa.fa-bars
         span
-          a.title(href="#") {{id}} : {{ note.title }}
+          a.title(href="#") {{id+1}} : {{ note.title }}
       .time {{ note.meta }}
       .tag {{ note.tag }}
 </template>
 
 <script>
+import Note from '@/components/Note';
+
 export default {
+  components: { Note },
   data() {
     return {
       notes: [],
@@ -90,7 +93,7 @@ h3
     border: solid 1px rgba(#000, 0.2)
 
   button.addNote
-    border: none
+    border: solid 1px rgba(#000, 0.2)
     border-radius: 5px
     background-color: #366ce2
     color: #fff

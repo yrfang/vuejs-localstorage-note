@@ -1,0 +1,102 @@
+<template lang="pug">
+.Note
+  header
+    a.backToList
+      span
+        i.fa.fa-chevron-left
+      span.menuText Viewing Note
+    a
+      i.fa.fa-pencil
+    a
+      i.fa.fa-trash
+  .content
+    .title 完成 Note！
+    .time 加入時間今天11:14 am
+    .tag important
+    .text 希望今天可以完成！希望今天可以完成！希望今天可以完成！希望今天可以完成！希望今天可以完成！
+</template>
+
+<script>
+export default {
+  props: ['id'],
+  data() {
+    return {
+
+    }
+  },
+  methods: {
+
+  },
+}
+</script>
+
+<style lang="sass" scoped>
+.Note
+
+header
+  padding: 10px 20px
+  background-color: #eee
+  color: #555
+  font-size: 20px
+  font-weight: 100
+  position: relative
+
+  i.fa.fa-chevron-left
+    margin-right: 20px
+    padding: 10px
+    padding-right: 20px
+    border-right: solid 2px #dbdbdb
+    cursor: pointer
+
+  .menuText
+    color: #36D1DC
+    font-size: 24px
+    font-weight: bold
+
+  i.fa.fa-pencil
+    cursor: pointer
+    position: absolute
+    top: 10px
+    right: 70px
+    padding: 10px
+    padding-right: 20px
+    border-right: solid 2px #dbdbdb
+
+  i.fa.fa-trash
+    cursor: pointer
+    position: absolute
+    top: 20px
+    right: 30px
+
+.content
+  margin-top: 40px
+  margin-left: auto
+  margin-right: auto
+  padding: 10px 20px
+  width: 60%
+  border: solid 1px rgba(#000,0.2)
+  border-radius: 5px
+
+  .title
+    font-size: 26px
+    font-weight: bold
+    color: #5B86E5
+    padding-top: 10px
+    padding-bottom: 10px
+
+  .time
+    font-size: 16px
+    color: #666
+    padding-top: 5px
+    padding-bottom: 5px
+
+  .tag
+    font-size: 18px
+    padding-top: 5px
+    padding-bottom: 5px
+
+  .text
+    font-size: 20px
+    padding-top: 10px
+    padding-bottom: 10px
+</style>
