@@ -33,7 +33,11 @@ export default {
     loadNote() {
       const getLocalNotes = localStorage.getItem('vuejs-note');
       const notes = JSON.parse(getLocalNotes);
-      this.note = notes[this.id];
+
+      if (this.note) {
+        this.note = notes[this.id];
+      }
+
       if (!this.note) {
         this.$router.push('/');
       }
@@ -45,11 +49,14 @@ export default {
       this.$router.push('/');
     },
     editNote() {
-      this.$router.push({ name: 'Edit Note', params: { id:this.id } });
+      if (this.note) {
+        this.$router.push({ name: 'Edit Note', params: { id: this.id } });
+      }
     },
     deleteNote() {
       const getLocalNotes = localStorage.getItem('vuejs-note');
       const notes = JSON.parse(getLocalNotes);
+
       if (confirm('Delete note?')) {
         notes.splice(this.id, 1);
         localStorage.setItem('vuejs-note', JSON.stringify(notes));
@@ -124,6 +131,7 @@ header
     font-size: 16px
     padding-top: 5px
     padding-bottom: 5px
+    color: #e8651c
 
   .text
     font-size: 20px

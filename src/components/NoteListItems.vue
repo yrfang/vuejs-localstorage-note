@@ -4,7 +4,7 @@
     .topper
       i.fa.fa-bars
       span
-        router-link(:to="{ name: 'View Note', params: { id } }")
+        router-link(:to="{ name: 'View Note', params: { id: this.id } }")
           a.title(href="#") {{ note.title }}
     .time {{ parseTimeCreate(note.meta) }}
     .tag {{ note.tag }}
@@ -54,4 +54,5 @@ export default {
   .tag
     font-size: 18px
     margin-top: 10px
+    color: #e8651c
 </style>

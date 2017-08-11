@@ -4,16 +4,13 @@
     a.backToList
       span(@click="goBack")
         i.fa.fa-chevron-left
-      span.menuText {{ id ? 'Editing Note' : 'Create Note' }}
+      span.menuText {{ undefined !== this.id ? 'Editing Note' : 'Create Note' }}
     a(@click="saveNote")
       button.saveNote Save
   .content
-    input.title(placeholder="Note title is required",
-                v-model="note.title")
-    input.tag(placeholder="Note tag",
-              v-model="note.tag")
-    textarea(placeholder="Note...",
-             v-model="note.text")
+    input.title(placeholder="Note title is required", v-model="note.title")
+    input.tag(placeholder="Note tag", v-model="note.tag")
+    textarea(placeholder="Note...", v-model="note.text")
 </template>
 
 <script>
@@ -24,11 +21,11 @@ export default {
   data() {
     return {
       note: {},
-      noteIndex: -1,
+      // noteIndex: -1,
     }
   },
   mounted() {
-    if (this.id) {
+    if (undefined !== this.id) {
       this.loadNote();
     }
   },
@@ -36,7 +33,8 @@ export default {
     loadNote() {
       const getLocalNotes = localStorage.getItem('vuejs-note');
       const notes = JSON.parse(getLocalNotes);
-      if (this.id) {
+
+      if (this.note) {
         this.note = notes[this.id];
       } else {
         this.$router.push('/');
@@ -50,7 +48,7 @@ export default {
       const createTextarea = document.querySelector('textarea');
       const editedNote = {
         title: this.note.title,
-        id: this.note.id || uuidV4(),
+        id: this.note.id,
         meta: Date.now(),
         tag: this.note.tag,
         text: this.note.text,
