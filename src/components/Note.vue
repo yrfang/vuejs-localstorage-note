@@ -40,10 +40,16 @@ export default {
       this.$router.push('/');
     },
     editNote() {
-
+      this.$router.push({ name: 'Edit Note', params: { id:this.id } });
     },
     deleteNote() {
-
+      const getLocalNotes = localStorage.getItem('vuejs-note');
+      const notes = JSON.parse(getLocalNotes);
+      if (confirm('Delete note?')) {
+        notes.splice(this.id, 1);
+        localStorage.setItem('vuejs-note', JSON.stringify(notes));
+        this.$router.push('/');
+      }
     },
   },
 }

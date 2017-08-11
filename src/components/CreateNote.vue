@@ -4,13 +4,13 @@
     a.backToList
       span(@click="goBack")
         i.fa.fa-chevron-left
-      span.menuText Editing Note
+      span.menuText {{ id ? 'Editing Note' : 'Create Note' }}
     a(@click="saveNote")
       button.saveNote Save
   .content
-    input.title(placeholder="Note title",
+    input.title(placeholder="Note title is required",
                 v-model="note.title")
-    iNput.tag(placeholder="Note tag",
+    input.tag(placeholder="Note tag",
               v-model="note.tag")
     textarea(placeholder="Note...",
              v-model="note.text")
@@ -33,11 +33,39 @@ export default {
     }
   },
   methods: {
-    saveNote() {
-
-    },
     loadNote() {
+      const getLocalNotes = localStorage.getItem('vuejs-note');
+      const notes = JSON.parse(getLocalNotes);
+      if (this.id) {
+        this.note = notes[this.id];
+      } else {
+        this.$router.push('/');
+      }
+    },
+    saveNote() {
+      const getLocalNotes = localStorage.getItem('vuejs-note');
+      const notes = JSON.parse(getLocalNotes);
 
+      const title = document.querySelector('.title');
+      const createTextarea = document.querySelector('textarea');
+      const editedNote = {
+        title: this.note.title,
+        id: this.note.id || uuidV4(),
+        meta: 'time使用moment',
+        tag: this.note.tag,
+        text: this.note.text,
+      };
+
+      if (title.value == '' | createTextarea.value == '') {
+        return this.$router.push('/');
+      } else if (title.value !== '' && this.id) {
+        notes[this.id] = editedNote;
+      } else {
+        notes.push(editedNote);
+      }
+
+      localStorage.setItem('vuejs-note', JSON.stringify(notes));
+      this.$router.push('/');
     },
     goBack() {
       this.$router.push('/');
@@ -89,7 +117,7 @@ header
   margin-right: auto
   padding: 10px 20px
   width: 60%
-  border: solid 1px rgba(#000,0.2)
+  border: solid 1px rgba(#366ce2,0.5)
   border-radius: 5px
 
   input, textarea
@@ -101,7 +129,11 @@ header
     border: solid 1px rgba(#000,0.2)
 
   .title
-    font-size: 26px
+    font-size: 24px
+    font-weight: bold
+    color: #5B86E5
+    padding-top: 10px
+    padding-bottom: 10px
 
   textarea
     font-size: 20px

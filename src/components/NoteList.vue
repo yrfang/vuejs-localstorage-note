@@ -31,10 +31,10 @@ export default {
     loadNotes() {
       const testData = [
         {
-          title: 'note one',
+          title: 'note 1',
           meta: "Added 20 days ago",
           tag: "work",
-          text: "the first record",
+          text: "the first record...Strange first one",
         },
         {
           title: 'note 2',
@@ -49,11 +49,9 @@ export default {
           text: "the 3 record",
         },
       ];
-      this.notes = testData;
-
-      localStorage.setItem('vuejs-note', JSON.stringify(this.notes));
-
-      const notes = localStorage.getItem('vuejs-note');
+      // localStorage.setItem('vuejs-note', JSON.stringify(testData));
+      const getLocalNotes = localStorage.getItem('vuejs-note');
+      this.notes = JSON.parse(getLocalNotes);
       // console.log(this.notes);
     },
     createNote() {

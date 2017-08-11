@@ -5,7 +5,7 @@
       i.fa.fa-bars
       span
         router-link(:to="{ name: 'View Note', params: { id } }")
-          a.title(href="#") {{id}}: {{ note.title }}
+          a.title(href="#") {{ note.title }}
     .time {{ note.meta }}
     .tag {{ note.tag }}
 </template>
@@ -37,7 +37,7 @@ export default {
 
     .title
       color: #366ce2
-      font-size: 24px
+      font-size: 26px
       font-weight: bold
 
   .time
