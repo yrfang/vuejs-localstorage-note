@@ -34,7 +34,7 @@ export default {
       const getLocalNotes = localStorage.getItem('vuejs-note');
       const notes = JSON.parse(getLocalNotes);
 
-      if (this.note) {
+      if (undefined !== this.id) {
         this.note = notes[this.id];
       } else {
         this.$router.push('/');
@@ -54,9 +54,9 @@ export default {
         text: this.note.text,
       };
 
-      if (title.value == '') {
+      if (title.value.trim() == '') {
         return this.$router.push('/');
-      } else if (title.value !== '' && this.id) {
+      } else if (undefined !== this.id) {
         notes[this.id] = editedNote;
       } else {
         notes.push(editedNote);
