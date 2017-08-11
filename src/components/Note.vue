@@ -11,12 +11,14 @@
       i.fa.fa-trash
   .content
     .title {{ note.title }}
-    .time 要使用moment.js
+    .time {{ parseTimeCreate(note.meta) }}
     .tag  {{ note.tag }}
     .text {{ note.text }}
 </template>
 
 <script>
+const moment = require('moment');
+
 export default {
   props: ['id',],
   data() {
@@ -35,6 +37,9 @@ export default {
       if (!this.note) {
         this.$router.push('/');
       }
+    },
+    parseTimeCreate(time) {
+      return moment(time).format('LLL');
     },
     goBack() {
       this.$router.push('/');

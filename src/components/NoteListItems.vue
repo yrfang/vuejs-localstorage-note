@@ -6,13 +6,20 @@
       span
         router-link(:to="{ name: 'View Note', params: { id } }")
           a.title(href="#") {{ note.title }}
-    .time {{ note.meta }}
+    .time {{ parseTimeCreate(note.meta) }}
     .tag {{ note.tag }}
 </template>
 
 <script>
+const moment = require('moment');
+
 export default {
   props: ['note', 'id'],
+  methods: {
+    parseTimeCreate(time) {
+      return moment(time).format('LLL');
+    }
+  }
 }
 </script>
 

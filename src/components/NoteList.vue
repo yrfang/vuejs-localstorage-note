@@ -32,24 +32,24 @@ export default {
       const testData = [
         {
           title: 'note 1',
-          meta: "Added 20 days ago",
+          meta: 1502445791235,
           tag: "work",
           text: "the first record...Strange first one",
         },
         {
           title: 'note 2',
-          meta: "Added 10 days ago",
+          meta: 1502445791235,
           tag: "work",
           text: "the 2 record",
         },
         {
           title: 'note 3',
-          meta: "Added 2 days ago",
+          meta: 1502445791235,
           tag: "work",
           text: "the 3 record",
         },
       ];
-      // localStorage.setItem('vuejs-note', JSON.stringify(testData));
+      localStorage.setItem('vuejs-note', JSON.stringify(testData));
       const getLocalNotes = localStorage.getItem('vuejs-note');
       this.notes = JSON.parse(getLocalNotes);
       // console.log(this.notes);

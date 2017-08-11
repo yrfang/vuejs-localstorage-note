@@ -51,7 +51,7 @@ export default {
       const editedNote = {
         title: this.note.title,
         id: this.note.id || uuidV4(),
-        meta: 'time使用moment',
+        meta: Date.now(),
         tag: this.note.tag,
         text: this.note.text,
       };
