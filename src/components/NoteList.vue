@@ -49,7 +49,7 @@ export default {
           text: "the 3 record",
         },
       ];
-      localStorage.setItem('vuejs-note', JSON.stringify(testData));
+      // localStorage.setItem('vuejs-note', JSON.stringify(testData));
       const getLocalNotes = localStorage.getItem('vuejs-note');
       this.notes = JSON.parse(getLocalNotes);
       // console.log(this.notes);

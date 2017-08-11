@@ -56,7 +56,7 @@ export default {
         text: this.note.text,
       };
 
-      if (title.value == '' | createTextarea.value == '') {
+      if (title.value == '') {
         return this.$router.push('/');
       } else if (title.value !== '' && this.id) {
         notes[this.id] = editedNote;
