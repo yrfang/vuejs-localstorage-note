@@ -10,8 +10,8 @@
       button.addNote(@click="createNote") Add Note
   .items
     ul
-      li(v-for="(note,id) in notesFiltered")
-        NoteListItems(:note="note", :id="id", :key="note.id")
+      li(v-for="note in notesFiltered")
+        NoteListItems(:note="note")
 </template>
 
 <script>
@@ -33,27 +33,17 @@ export default {
   computed: {
     notesFiltered() {
       const searchWord = this.searchWord.trim().toLowerCase();
-      const headings = ['title'];
-      // if (searchWord == '') return this.notes;
-
-      // this.notes.filter((note)=>{
-      //   headings.forEach((key) => {
-      //     console.log(note[key]);
-      //     if (note[key].indexOf(searchWord) !== -1) {
-      //       return this.notes;
-      //     }
-      //   });
-      // });
-
-      // if (searchWord == '') return this.notes;
+      const headings = ['title','text'];
 
       return this.notes.filter((note)=>{
-        if (note['title'].toLowerCase().indexOf(searchWord) != -1) {
-          return this.notes;
-        }
-        if (note['text'].toLowerCase().indexOf(searchWord) != -1) {
-          return this.notes;
-        }
+
+        function LowerSearch(obj) {
+           return (obj.toLowerCase().indexOf(searchWord) != -1)
+        };
+
+        return (searchWord === "" ||
+        LowerSearch(note['title']) ||
+        LowerSearch(note['text']));
       });
     },
   },
@@ -80,6 +70,7 @@ export default {
         },
       ];
       // localStorage.setItem('vuejs-note', JSON.stringify(testData));
+      // localStorage.setItem('vuejs-note', JSON.stringify([]));
       const getLocalNotes = localStorage.getItem('vuejs-note');
       this.notes = JSON.parse(getLocalNotes);
       // console.log(this.notes);

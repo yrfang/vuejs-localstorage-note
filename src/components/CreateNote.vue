@@ -33,6 +33,7 @@ export default {
     loadNote() {
       const getLocalNotes = localStorage.getItem('vuejs-note');
       const notes = JSON.parse(getLocalNotes);
+      
 
       if (undefined !== this.id) {
         this.note = notes[this.id];
@@ -42,13 +43,15 @@ export default {
     },
     saveNote() {
       const getLocalNotes = localStorage.getItem('vuejs-note');
-      const notes = JSON.parse(getLocalNotes);
+      const notes = (null === getLocalNotes?[]:JSON.parse(getLocalNotes));
+      // console.log(getLocalNotes);
 
       const title = document.querySelector('.title');
       const createTextarea = document.querySelector('textarea');
+
       const editedNote = {
         title: this.note.title,
-        id: this.note.id,
+        id: this.note.id || uuidV4(),
         meta: Date.now(),
         tag: this.note.tag,
         text: this.note.text,

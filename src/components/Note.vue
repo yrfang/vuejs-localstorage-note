@@ -33,10 +33,7 @@ export default {
     loadNote() {
       const getLocalNotes = localStorage.getItem('vuejs-note');
       const notes = JSON.parse(getLocalNotes);
-
-      if (this.note) {
-        this.note = notes[this.id];
-      }
+      this.note = notes.find((note) => note.id === this.id);
 
       if (!this.note) {
         this.$router.push('/');
@@ -50,7 +47,7 @@ export default {
     },
     editNote() {
       if (this.note) {
-        this.$router.push({ name: 'Edit Note', params: { id: this.id } });
+        this.$router.push({ name: 'Edit Note', params: { id: this.note.id } });
       }
     },
     deleteNote() {

@@ -4,7 +4,7 @@
     .topper
       i.fa.fa-bars
       span
-        router-link(:to="{ name: 'View Note', params: { id: this.id } }")
+        router-link(:to="{ name: 'View Note', params: { id: note.id } }")
           a.title(href="#") {{ note.title }}
     .time {{ parseTimeCreate(note.meta) }}
     .tag {{ note.tag }}
@@ -14,7 +14,7 @@
 const moment = require('moment');
 
 export default {
-  props: ['note', 'id'],
+  props: ['note'],
   methods: {
     parseTimeCreate(time) {
       return moment(time).format('LLL');
