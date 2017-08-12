@@ -3,7 +3,7 @@
   .topBar
     .row.searchBar
       i.fa.fa-search
-      input.form-control.search(placeholder="search title or content in notes", v-model="searchWord")
+      input.form-control.search(placeholder="search the notes", v-model="searchWord")
     .row
       select.tagSelect(v-model="tag")
         option(v-for="i in 5") {{i}}
@@ -33,17 +33,23 @@ export default {
   computed: {
     notesFiltered() {
       const searchWord = this.searchWord.trim().toLowerCase();
-      const headings = ['title','text'];
+      const headings = ['title','text', 'tag'];
 
       return this.notes.filter((note)=>{
+        // console.log(note['title']);
+        if (note['title'] !== '') {
+          note['text'] = (undefined === note['text'] ? '' : note['text']);
+          note['tag'] = (undefined === note['tag'] ? '' : note['tag']);
 
-        function LowerSearch(obj) {
-           return (obj.toLowerCase().indexOf(searchWord) != -1)
-        };
+          function LowerSearch(obj) {
+             return (obj.toLowerCase().indexOf(searchWord) != -1)
+          };
 
-        return (searchWord === "" ||
-        LowerSearch(note['title']) ||
-        LowerSearch(note['text']));
+          return (searchWord === "" ||
+          LowerSearch(note['title']) ||
+          LowerSearch(note['text']) ||
+          LowerSearch(note['tag']) );
+        }
       });
     },
   },
@@ -70,7 +76,6 @@ export default {
         },
       ];
       // localStorage.setItem('vuejs-note', JSON.stringify(testData));
-      // localStorage.setItem('vuejs-note', JSON.stringify([]));
       const getLocalNotes = localStorage.getItem('vuejs-note');
       this.notes = (null === getLocalNotes?[]:JSON.parse(getLocalNotes));
       // console.log(this.notes);

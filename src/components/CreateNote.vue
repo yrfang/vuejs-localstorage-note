@@ -60,7 +60,7 @@ export default {
 
       if (title.value.trim() == '') {
         return this.$router.push('/');
-      } else if (meetIndex >= 0) {
+      } else if (undefined !== meetIndex && meetIndex >= 0) {
         notes[meetIndex] = editedNote;
       } else {
         notes.push(editedNote);
