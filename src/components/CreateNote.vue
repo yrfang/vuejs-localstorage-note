@@ -33,10 +33,10 @@ export default {
     loadNote() {
       const getLocalNotes = localStorage.getItem('vuejs-note');
       const notes = JSON.parse(getLocalNotes);
-      
+
 
       if (undefined !== this.id) {
-        this.note = notes[this.id];
+        this.note = notes.find((note) => note.id === this.id);
       } else {
         this.$router.push('/');
       }
@@ -44,7 +44,6 @@ export default {
     saveNote() {
       const getLocalNotes = localStorage.getItem('vuejs-note');
       const notes = (null === getLocalNotes?[]:JSON.parse(getLocalNotes));
-      // console.log(getLocalNotes);
 
       const title = document.querySelector('.title');
       const createTextarea = document.querySelector('textarea');
@@ -57,10 +56,12 @@ export default {
         text: this.note.text,
       };
 
+      const meetIndex = notes.findIndex((note) => note.id === this.id);
+
       if (title.value.trim() == '') {
         return this.$router.push('/');
-      } else if (undefined !== this.id) {
-        notes[this.id] = editedNote;
+      } else if (meetIndex >= 0) {
+        notes[meetIndex] = editedNote;
       } else {
         notes.push(editedNote);
       }

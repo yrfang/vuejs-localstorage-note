@@ -32,7 +32,8 @@ export default {
   methods: {
     loadNote() {
       const getLocalNotes = localStorage.getItem('vuejs-note');
-      const notes = JSON.parse(getLocalNotes);
+      // const notes = JSON.parse(getLocalNotes);
+      const notes = (null === getLocalNotes?[]:JSON.parse(getLocalNotes));
       this.note = notes.find((note) => note.id === this.id);
 
       if (!this.note) {

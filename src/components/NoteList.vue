@@ -72,7 +72,7 @@ export default {
       // localStorage.setItem('vuejs-note', JSON.stringify(testData));
       // localStorage.setItem('vuejs-note', JSON.stringify([]));
       const getLocalNotes = localStorage.getItem('vuejs-note');
-      this.notes = JSON.parse(getLocalNotes);
+      this.notes = (null === getLocalNotes?[]:JSON.parse(getLocalNotes));
       // console.log(this.notes);
     },
     createNote() {
