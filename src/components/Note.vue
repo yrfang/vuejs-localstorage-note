@@ -53,10 +53,11 @@ export default {
     },
     deleteNote() {
       const getLocalNotes = localStorage.getItem('vuejs-note');
-      const notes = JSON.parse(getLocalNotes);
+      const notes = (null === getLocalNotes?[]:JSON.parse(getLocalNotes));
+      const meetIndex = notes.findIndex((note) => note.id === this.id);
 
       if (confirm('Delete note?')) {
-        notes.splice(this.id, 1);
+        notes.splice(meetIndex, 1);
         localStorage.setItem('vuejs-note', JSON.stringify(notes));
         this.$router.push('/');
       }
