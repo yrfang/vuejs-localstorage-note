@@ -3,14 +3,14 @@
   .topBar
     .row.searchBar
       i.fa.fa-search
-      input.form-control.search(placeholder="search your notes")
+      input.form-control.search(placeholder="search title or content in notes", v-model="searchWord")
     .row
-      select.tagSelect
+      select.tagSelect(v-model="tag")
         option(v-for="i in 5") {{i}}
       button.addNote(@click="createNote") Add Note
   .items
     ul
-      li(v-for="(note,id) in notes")
+      li(v-for="(note,id) in notesFiltered")
         NoteListItems(:note="note", :id="id", :key="note.id")
 </template>
 
@@ -22,10 +22,40 @@ export default {
   data() {
     return {
       notes: [],
+      searchWord: '',
+      tags: [],
+      tag: 'classification',
     }
   },
   mounted() {
     this.loadNotes();
+  },
+  computed: {
+    notesFiltered() {
+      const searchWord = this.searchWord.trim().toLowerCase();
+      const headings = ['title'];
+      // if (searchWord == '') return this.notes;
+
+      // this.notes.filter((note)=>{
+      //   headings.forEach((key) => {
+      //     console.log(note[key]);
+      //     if (note[key].indexOf(searchWord) !== -1) {
+      //       return this.notes;
+      //     }
+      //   });
+      // });
+
+      // if (searchWord == '') return this.notes;
+
+      return this.notes.filter((note)=>{
+        if (note['title'].toLowerCase().indexOf(searchWord) != -1) {
+          return this.notes;
+        }
+        if (note['text'].toLowerCase().indexOf(searchWord) != -1) {
+          return this.notes;
+        }
+      });
+    },
   },
   methods: {
     loadNotes() {
