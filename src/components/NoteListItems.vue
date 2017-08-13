@@ -33,7 +33,10 @@ export default {
   margin-left: auto
   margin-right: auto
   width: 80%
-  height: 150px
+  height: 150
+
+  @media screen and (max-width: 480px)
+    width: 100%
 
   .topper
     i.fa.fa-bars

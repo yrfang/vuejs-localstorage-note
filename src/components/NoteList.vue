@@ -1,13 +1,14 @@
 <template lang="pug">
 .NoteList
   .topBar
-    .searchBar
-      i.fa.fa-search
-      input.form-control.search.col-xs-12(placeholder="search the notes", v-model="searchWord")
     .row
-      select.tagSelect.col-xs-12(v-model="tag")
+      .searchBar
+        i.fa.fa-search
+        input.search(placeholder="search the notes", v-model="searchWord")
+    .row
+      select.tagSelect(v-model="tag")
         option(v-for="tag in Array.from(tags)") {{ tag }}
-      button.addNote.col-xs-12(@click="createNote") Add Note
+      button.addNote(@click="createNote") Add Note
   .items
     ul
       li(v-for="note in notesFiltered")
@@ -118,6 +119,7 @@ h3
 
   .searchBar
     position: relative
+    width: 100%
 
     i.fa.fa-search
       position: absolute
@@ -132,20 +134,25 @@ h3
       padding-bottom: 10px
       padding-left: 50px
       margin-right: 15px
-      margin-bottom: 10px
       font-size: 18px
       width: 100%
       height: 45px
 
   select.tagSelect
-    // width: 20%
+    width: 200px
     height: 45px
     margin-right: 15px
+    margin-top: 10px
     padding: 5px 10px
     background-color: #fff
     border: solid 1px rgba(#000, 0.2)
 
+    @media screen and (max-width: 480px)
+        width: 100%
+        margin-right: 0px
+
   button.addNote
+    margin-top: 10px
     border: solid 1px rgba(#000, 0.2)
     border-radius: 5px
     background-color: #366ce2
@@ -159,6 +166,9 @@ h3
     &:hover
       background-color: rgba(#366ce2,0.7)
 
+    @media screen and (max-width: 480px)
+        width: 100%
+
 .items
   padding-left: 100px
   padding-right: 100px
@@ -171,13 +181,14 @@ h3
   overflow-y: scroll
   z-index: -10
 
+  @media screen and (max-width: 768px)
+    padding-left: 30px
+    padding-right: 30px
+    top: 250px
+
   ul
     margin: 0px
     padding: 0px
     li
       list-style: none
-
-@media (min-width:480px)
-  input
-    width: 100%
 </style>
