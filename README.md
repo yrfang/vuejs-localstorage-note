@@ -3,7 +3,7 @@
 > A Vue.js project with localstorage so your data will be exist as browser refresh.
 
 ## Demo
-[](https://yrfang.github.io/vuejs-localstorage-note/)
+[demo website](https://yrfang.github.io/vuejs-localstorage-note/)
 
 ## Build Setup
 
