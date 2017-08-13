@@ -23,7 +23,7 @@ export default {
     return {
       notes: [],
       searchWord: '',
-      tags: ['all tags', 'pet', 'work'],
+      tags: ['all tags'],
       tag: 'all tags',
     }
   },
@@ -85,6 +85,16 @@ export default {
       const getLocalNotes = localStorage.getItem('vuejs-note');
       this.notes = (null === getLocalNotes?[]:JSON.parse(getLocalNotes));
       // console.log(this.notes);
+
+      let mySet = new Set();
+      this.notes.forEach((note)=>{
+        return mySet.add(note['tag']);
+      });
+
+      mySet.forEach((item)=>{
+        this.tags.push(item);
+      });
+      // console.log(this.tags);
     },
     createNote() {
       this.$router.push('new');
