@@ -1,6 +1,9 @@
-# vuejs-todolist
+# vuejs-localstorage-note
 
-> A Vue.js project
+> A Vue.js project with localstorage so your data will be exist as browser refresh.
+
+## Demo
+[](https://yrfang.github.io/vuejs-localstorage-note/)
 
 ## Build Setup
 
