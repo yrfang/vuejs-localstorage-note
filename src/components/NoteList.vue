@@ -6,7 +6,7 @@
       input.form-control.search(placeholder="search the notes", v-model="searchWord")
     .row
       select.tagSelect(v-model="tag")
-        option(v-for="i in 5") {{i}}
+        option(v-for="tag in tags") {{ tag }}
       button.addNote(@click="createNote") Add Note
   .items
     ul
@@ -23,8 +23,8 @@ export default {
     return {
       notes: [],
       searchWord: '',
-      tags: [],
-      tag: 'classification',
+      tags: ['all tags', 'pet', 'work'],
+      tag: 'all tags',
     }
   },
   mounted() {
@@ -34,6 +34,7 @@ export default {
     notesFiltered() {
       const searchWord = this.searchWord.trim().toLowerCase();
       const headings = ['title','text', 'tag'];
+      const tag = this.tag;
 
       return this.notes.filter((note)=>{
         // console.log(note['title']);
@@ -42,13 +43,18 @@ export default {
           note['tag'] = (undefined === note['tag'] ? '' : note['tag']);
 
           function LowerSearch(obj) {
-             return (obj.toLowerCase().indexOf(searchWord) != -1)
+             return (obj.toLowerCase().indexOf(searchWord) !== -1)
           };
 
           return (searchWord === "" ||
           LowerSearch(note['title']) ||
           LowerSearch(note['text']) ||
           LowerSearch(note['tag']) );
+        }
+      }).filter((note) => {
+        if (tag == 'all tags') return note;
+        if (tag !== 'all tags') {
+          return (note['tag'].indexOf(tag) !== -1);
         }
       });
     },
