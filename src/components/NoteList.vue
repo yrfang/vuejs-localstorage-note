@@ -6,7 +6,7 @@
       input.form-control.search(placeholder="search the notes", v-model="searchWord")
     .row
       select.tagSelect(v-model="tag")
-        option(v-for="tag in tags") {{ tag }}
+        option(v-for="tag in Array.from(tags)") {{ tag }}
       button.addNote(@click="createNote") Add Note
   .items
     ul
@@ -23,7 +23,7 @@ export default {
     return {
       notes: [],
       searchWord: '',
-      tags: ['all tags'],
+      tags: new Set().add('all tags'),
       tag: 'all tags',
     }
   },
@@ -86,15 +86,10 @@ export default {
       this.notes = (null === getLocalNotes?[]:JSON.parse(getLocalNotes));
       // console.log(this.notes);
 
-      let mySet = new Set();
       this.notes.forEach((note)=>{
-        return mySet.add(note['tag']);
+        return this.tags.add((note['tag']));
       });
 
-      mySet.forEach((item)=>{
-        this.tags.push(item);
-      });
-      // console.log(this.tags);
     },
     createNote() {
       this.$router.push('new');
