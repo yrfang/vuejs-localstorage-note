@@ -1,13 +1,13 @@
 <template lang="pug">
 .NoteList
   .topBar
-    .row.searchBar
+    .searchBar
       i.fa.fa-search
-      input.form-control.search(placeholder="search the notes", v-model="searchWord")
+      input.form-control.search.col-xs-12(placeholder="search the notes", v-model="searchWord")
     .row
-      select.tagSelect(v-model="tag")
+      select.tagSelect.col-xs-12(v-model="tag")
         option(v-for="tag in Array.from(tags)") {{ tag }}
-      button.addNote(@click="createNote") Add Note
+      button.addNote.col-xs-12(@click="createNote") Add Note
   .items
     ul
       li(v-for="note in notesFiltered")
@@ -87,7 +87,9 @@ export default {
       // console.log(this.notes);
 
       this.notes.forEach((note)=>{
-        return this.tags.add((note['tag']));
+        if (note['tag'] !== '') {
+          return this.tags.add((note['tag']));
+        }
       });
 
     },
@@ -136,7 +138,7 @@ h3
       height: 45px
 
   select.tagSelect
-    width: 20%
+    // width: 20%
     height: 45px
     margin-right: 15px
     padding: 5px 10px
