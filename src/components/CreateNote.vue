@@ -158,8 +158,8 @@ header
     margin-left: 20px
     margin-right: 20px
     margin-bottom: 20px
-    font-size: 18px
+    font-size: 16px
 
     .title
-      font-size: 20px
+      font-size: 18px
 </style>

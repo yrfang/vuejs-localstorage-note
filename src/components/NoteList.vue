@@ -109,7 +109,6 @@ h3
 
 .topBar
   padding: 20px 30px
-  margin-bottom: 30px
   position: fixed
   top: 0px
   left: 0px
@@ -147,8 +146,8 @@ h3
     border: solid 1px rgba(#000, 0.2)
 
     @media screen and (max-width: 480px)
-        width: 100%
-        margin-right: 0px
+        width: 50%
+        margin-right: 10px
 
   button.addNote
     margin-top: 10px
@@ -166,7 +165,7 @@ h3
       background-color: rgba(#366ce2,0.7)
 
     @media screen and (max-width: 480px)
-        width: 100%
+        width: 45%
 
 .items
   padding-left: 100px
@@ -183,7 +182,7 @@ h3
   @media screen and (max-width: 480px)
     padding-left: 20px
     padding-right: 20px
-    top: 230px
+    top: 150px
 
   @media (min-width: 480px) and (max-width: 960px)
     padding-left: 40px
