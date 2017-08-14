@@ -43,7 +43,7 @@ export default {
       margin-right: 10px
       color: #b6b6b6
       font-size: 18px
-      cursor: grab
+      // cursor: grab
 
     .title
       color: #366ce2

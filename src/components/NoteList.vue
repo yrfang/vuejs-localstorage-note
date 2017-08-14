@@ -184,7 +184,7 @@ h3
   @media screen and (max-width: 768px)
     padding-left: 30px
     padding-right: 30px
-    top: 250px
+    top: 230px
 
   ul
     margin: 0px
