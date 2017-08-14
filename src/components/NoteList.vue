@@ -181,14 +181,23 @@ h3
   overflow-y: scroll
   z-index: -10
 
-  @media screen and (max-width: 768px)
-    padding-left: 30px
-    padding-right: 30px
+  @media screen and (max-width: 480px)
+    padding-left: 20px
+    padding-right: 20px
     top: 230px
 
+  @media (min-width: 480px) and (max-width: 960px)
+    padding-left: 40px
+    padding-right: 40px
+
   ul
-    margin: 0px
+    margin-left: auto
+    margin-right: auto
     padding: 0px
     li
       list-style: none
+
+      @media screen and (min-width: 768px)
+        width: 50%
+        display: inline-block
 </style>

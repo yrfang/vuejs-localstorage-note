@@ -35,9 +35,6 @@ export default {
   width: 80%
   height: 150
 
-  @media screen and (max-width: 480px)
-    width: 100%
-
   .topper
     i.fa.fa-bars
       margin-right: 10px
@@ -58,4 +55,31 @@ export default {
     font-size: 18px
     margin-top: 10px
     color: #e8651c
+
+@media screen and (max-width: 480px)
+  .noteContainer
+    margin-bottom: 15px
+
+@media screen and (max-width: 767px)
+  .noteContainer
+    padding: 20px 15px
+    width: 100%
+
+    .topper
+      .title
+        font-size: 22px
+      .time
+        font-size: 10px
+      .tag
+        font-size: 14px
+
+@media (min-width: 480px) and (max-width: 960px)
+  .noteContainer
+    padding: 20px 30px
+    width: 90%
+
+@media screen and (min-width: 960px)
+  .noteContainer
+    width: 90%
+
 </style>
