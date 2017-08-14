@@ -5,7 +5,7 @@
       i.fa.fa-bars
       span
         router-link(:to="{ name: 'View Note', params: { id: note.id } }")
-          a.title(href="#") {{ note.title }}
+          a.title(href="#") {{ subStringTitle(note.title) }}
     .time {{ parseTimeCreate(note.meta) }}
     .tag {{ note.tag }}
 </template>
@@ -18,6 +18,13 @@ export default {
   methods: {
     parseTimeCreate(time) {
       return moment(time).format('LLL');
+    },
+    subStringTitle(words) {
+      if (words.length > 40) {
+        return words.substring(0, 40) + "...";
+      } else {
+        return words;
+      }
     }
   }
 }
@@ -36,6 +43,8 @@ export default {
   height: 150
 
   .topper
+    height: 70px
+
     i.fa.fa-bars
       margin-right: 10px
       color: #b6b6b6
@@ -44,7 +53,7 @@ export default {
 
     .title
       color: #366ce2
-      font-size: 26px
+      font-size: 22px
       font-weight: bold
 
   .time
@@ -55,10 +64,13 @@ export default {
     font-size: 18px
     margin-top: 10px
     color: #e8651c
+    height: 30px
 
 @media screen and (max-width: 480px)
   .noteContainer
     margin-bottom: 15px
+    .topper, .tag
+      height: initial
 
 @media screen and (max-width: 767px)
   .noteContainer

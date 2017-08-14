@@ -11,7 +11,7 @@
       button.addNote(@click="createNote") Add Note
   .items
     ul
-      li(v-for="note in notesFiltered")
+      li(v-for="(note,index) in notesFiltered")
         NoteListItems(:note="note")
 </template>
 
@@ -92,11 +92,10 @@ export default {
           return this.tags.add((note['tag']));
         }
       });
-
     },
     createNote() {
       this.$router.push('new');
-    }
+    },
   },
 }
 </script>
@@ -196,6 +195,7 @@ h3
     padding: 0px
     li
       list-style: none
+      vertical-align: top
 
       @media screen and (min-width: 768px)
         width: 50%

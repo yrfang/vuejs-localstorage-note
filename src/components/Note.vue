@@ -157,4 +157,7 @@ header
 
   .content
     width: 80%
+
+    .title
+      font-size: 20px
 </style>
