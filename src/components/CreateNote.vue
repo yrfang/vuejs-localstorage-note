@@ -140,4 +140,26 @@ header
   textarea
     font-size: 20px
     height: 200px
+
+@media screen and (max-width: 480px)
+  header
+    padding: 10px
+    height: 110px
+    width: 100vw
+
+    button.saveNote
+      top: 57px
+      right: initial
+      left: 15px
+      width: 90%
+
+  .content
+    width: 90%
+    margin-left: 20px
+    margin-right: 20px
+    margin-bottom: 20px
+    font-size: 18px
+
+    .title
+      font-size: 20px
 </style>

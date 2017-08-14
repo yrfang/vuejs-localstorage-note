@@ -142,9 +142,6 @@ header
     padding: 10px
     height: 110px
 
-    i.fa.fa-chevron-left
-
-
     .menuText
       font-size: 22px
 
@@ -154,7 +151,7 @@ header
       left: 7px
 
     i.fa.fa-trash
-      top: 65px
+      top: 67px
       right: initial
       left: 75px
 
