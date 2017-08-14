@@ -136,4 +136,28 @@ header
     font-size: 20px
     padding-top: 10px
     padding-bottom: 10px
+
+@media screen and (max-width: 480px)
+  header
+    padding: 10px
+    height: 110px
+
+    i.fa.fa-chevron-left
+
+
+    .menuText
+      font-size: 22px
+
+    i.fa.fa-pencil
+      top: 57px
+      right: initial
+      left: 7px
+
+    i.fa.fa-trash
+      top: 65px
+      right: initial
+      left: 75px
+
+  .content
+    width: 80%
 </style>
