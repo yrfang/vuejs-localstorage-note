@@ -155,7 +155,7 @@ header
 
   .content
     width: 90%
-    margin-left: 20px
+    margin-left: 15px
     margin-right: 20px
     margin-bottom: 20px
     font-size: 16px

@@ -180,7 +180,7 @@ h3
   z-index: -10
 
   @media screen and (max-width: 480px)
-    padding-left: 20px
+    padding-left: 25px
     padding-right: 30px
     top: 150px
 
