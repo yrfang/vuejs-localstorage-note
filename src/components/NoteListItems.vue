@@ -2,7 +2,7 @@
 .NoteListItems
   .noteContainer
     .topper
-      i.fa.fa-bars
+      <!--i.fa.fa-bars-->
       span
         router-link(:to="{ name: 'View Note', params: { id: note.id } }")
           a.title(href="#") {{ subStringTitle(note.title) }}
